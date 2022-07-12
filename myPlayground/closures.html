@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Closures</title>
+    <link rel="stylesheet" href="../base.css">
+</head>
+
+<body>
+
+    <script>
+        // function outer() {
+        //     const outerVar = 'outer var here';
+        //     function inner() {
+        //         const innerVar = 'inner var signing in';
+        //         console.log(innerVar);
+        //         console.log(outerVar);
+        //     }
+        //     return inner;
+        // }
+
+        // const innerFn = outer();
+        // innerFn();
+
+        function createGreeting(greeting = '') {
+            const myGreet = greeting.toUpperCase();
+            return function (name) {
+                return `${myGreet} ${name}`;
+            };
+        }
+
+        const sayGudday = createGreeting('gudday');
+        const sayHey = createGreeting('hey');
+        console.log(sayGudday('Cdog'));
+        console.log(sayGudday('Katti'));
+        console.log(sayHey('Katti'));
+
+        function createGame(gameName) {
+            let score = 0;
+            return function win() {
+                score++;
+                return `Your ${gameName} score is ${score}`;
+            };
+        }
+
+        const spaceInvaderScore = createGame('Space Invaders');
+        console.log(spaceInvaderScore());
+    </script>
+
+</body>
+
+</html>
