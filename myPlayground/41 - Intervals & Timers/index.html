@@ -1,0 +1,41 @@
+<!-- eslint-disable no-console -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Intervals & Timers</title>
+  <link rel="stylesheet" href="../../base.css">
+</head>
+<body>
+  <script>
+    function buzzer() {
+      console.log('buzzer goes off');
+    }
+    // console.log('start timer');
+    // setTimeout(buzzer, 1000);
+    // console.log('end timer');
+
+    // setImmediateInterval(buzzer, 100);
+
+    function setImmediateInterval(funcToRun, ms) {
+      // call the function immediately
+      funcToRun();
+      // run regular interval
+      return setInterval(funcToRun, ms);
+    }
+
+    function destroy() {
+      document.body.innerHTML = `<p>DESTROYED</P>`;
+    }
+    
+    const bombTimer = setTimeout(destroy, 2000);
+
+    window.addEventListener('click', () => {
+      console.log(`You saved the world`);
+      clearTimeout(bombTimer);
+    });
+  </script>
+</body>
+</html>
