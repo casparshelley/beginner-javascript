@@ -8,13 +8,56 @@
   <link rel="stylesheet" href="../../base.css">
 </head>
 <body>
+  <script src="https://unpkg.com/lodash"></script>
   <script>
     const age = 100;
-    const person = {
+    const cdog = {
       age,
-      name: 'wes',
+      name: 'Casparius',
+      // 'cool-dude': true,
+      // 'really cool': false,
+      // 777: true,
+      clothing: {
+        shirts: 10,
+        pants: 2,
+      },
+      sayHello(greeting = 'Hey') {
+        return `${greeting} ${this.name}`;
+      },
     };
-    console.log(person);
-  </script>
+
+    const cdogFroze = Object.freeze(cdog);
+
+    // cdog.name = 'cDude';
+    // cdog.job = 'Webby D';
+    // cdog.age = 50;
+
+    // console.log(cdog);
+    // console.log(cdogFroze);
+
+    const person1 = {
+      first: 'casparius',
+      last: 'fondleschaften',
+      clothing: {
+        shirts: 10,
+        pants: 2,
+      },
+    };
+
+    const person2 = {
+      first: 'casparius',
+      last: 'fondleschaften',
+    };
+
+    const person3 = person1;
+    console.log(person1 === person3); // true
+    person3.first = 'caspar';
+    console.log(person1.first === person3.first); // true
+    const person4 = { ...person1 }; // object literal copies source
+    person4.first = 'katayoun';
+    console.log(person1.first === person4.first); // false
+
+    //
+    </script>
 </body>
 </html>
