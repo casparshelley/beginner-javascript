@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Prototypes</title>
+</head>
+<body>
+  
+  <script>
+    function Pizza(toppings = [], customer) {
+      this.toppings = toppings;
+      this.customer = customer;
+      this.id = Math.floor(Math.random() * 16777215).toString(16);
+      this.slices = 12;
+    }
+    Pizza.prototype.eat = function () {
+  if (this.slices > 0) {
+    this.slices -= 1;
+    console.log(`CHOMP. You now have ${this.slices} left.`);
+    return this.slices;
+  }
+  console.log(`Sorry. Nothing left.`);
+  return this.slices;
+};
+    const pizzaMargharita = new Pizza(['Buffalo Mozarella', 'Fresh Basil'], 'Caspar');
+    const pizzaGross = new Pizza(['Garlic', 'Pineapple', 'Ham'], 'Fergal');
+    console.log(pizzaMargharita);
+    console.log(pizzaGross);
+  </script>
+</body>
+</html>
