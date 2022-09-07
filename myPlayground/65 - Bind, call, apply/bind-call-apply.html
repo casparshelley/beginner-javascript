@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bind Call Apply</title>
+  <link rel="stylesheet" href="../../base.css">
+</head>
+<body>
+  <p>Hey</p>
+  <div class="wrapper">
+    <p>I'm in de ole rapper</p>
+  </div>
+  <button>Click Me</button>
+  <script>
+    const person = {
+      name: 'cDog Fondleschaften',
+      sayHi() {
+        console.log(this);
+        console.log(`Hey ${this.name}`);
+        return `Hey ${this.name}`;
+      },
+    };
+    // const { sayHi } = person;
+    const sayHi = person.sayHi.bind(person);
+
+    // QS Example
+    // const $ = document.querySelector; // causes Illegal invocation
+    // use bind to specify 'document' as 'this' in the $ function
+    const $ = document.querySelector.bind(document);
+
+    // const wrapper = document.querySelector('.wrapper');
+    const wrapper = $('.wrapper');
+    const p = wrapper.querySelector('p');
+    console.log(p);
+
+    const bill = {
+      total: 1000,
+      calculate(taxRate, total = this.total) {
+        console.log(this);
+        return total + total * taxRate;
+      },
+      describe(mealType, drinkType, taxRate, total = this.total) {
+        console.log(`Your meal of ${mealType} with a drink of ${drinkType} was ${this.calculate(taxRate, total)}`);
+      },
+    };
+
+    // Just use the object and function
+    const total = bill.calculate(0.13);
+    console.log(total);
+
+    // use with bind where you can set the function properties
+    const calc = bill.calculate.bind({ total: 500 }, 0.75);
+    console.log(calc());
+
+    // use with call where the function is called automatically
+    const total2 = bill.calculate.call({ total: 500 }, 0.4);
+    console.log(total2);
+    
+    // use with apply where the properties are sent as an array
+    const total3 = bill.calculate.apply({ total: 325 }, [0.6]);
+    console.log(total3);
+
+    const myMeal = bill.describe.call(bill, 'pizza', 'beer', 0.13);
+    console.log(myMeal);
+
+    const myMeal2 = bill.describe.apply(bill, ['pizza', 'beer', 0.13]);
+    console.log(myMeal2);
+
+    const myMeal3 = bill.describe.call(bill, 'pizza', 'beer', 0.175, 60);
+    console.log(myMeal3);
+      </script>
+</body>
+</html>
