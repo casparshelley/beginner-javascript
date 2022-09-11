@@ -1,0 +1,34 @@
+<!-- eslint-disable no-console -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>APIs</title>
+  <link rel="stylesheet" href="../../base.css">
+</head>
+<body>
+  <p class="user"></p>
+  <script>
+    const baseEndpoint = 'https://api.github.com';
+    const usersEndPoint = `${baseEndpoint}/users`;
+    const userEl = document.querySelector('.user');
+
+    async function displayUser(username) {
+      userEl.textContent = `Loading...`;
+      const response = await fetch(`${usersEndPoint}/${username}`);
+      const data = await response.json();
+      userEl.textContent = `${data.name} - ${data.blog}`;
+    }
+
+    function handleError(err) {
+      console.log('whoopsie');
+      console.log(err);
+      userEl.textContent = `Something went wrong: ${err}`;
+    }
+
+    displayUser('stolinksi').catch(handleError);
+  </script>
+</body>
+</html>
