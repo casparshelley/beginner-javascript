@@ -1,6 +1,7 @@
 node_modules/
 .DS_Store
 haters/
+.parce-cache/
 .cache/
 dist/
 Icon

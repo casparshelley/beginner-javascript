@@ -1,8 +1,2 @@
-const baseEndPoint = 'https://recipes.beginnerjavascript.com/api';
-
-async function fetchRecipes(query) {
-  const res = await fetch(`${baseEndPoint}?q=${query}`);
-  const data = await res.json();
-}
-
-fetchRecipes('pizza');
+// The Recipe Puppy API used in the course is broken
+// Please use this replacement API URL "https://recipes.beginnerjavascript.com/api"
