@@ -11,15 +11,32 @@
       display: grid;
       grid-template-columns: 1fr;
     }
+    button[disabled]{
+      opacity: 0.2;
+    }
+    .recipes {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      grid-gap: 30px;
+    }
+    .recipe img {
+      max-width: 100%;
+    }
+
+    .recipe {
+      border: 1px solid rgba(0,0,0,0.1);
+      padding: 10px;
+    }
   </style>
 </head>
 
 <body>
   <div class="wrapper">
     <form class="search" autocomplete="off">
-      <input type="text" name="query">
+      <input type="text" name="query" value="pizza">
       <button name="submit" type="submit">Submit</button>
     </form>
+    <div class="recipes"></div>
     <div class="recipes"></div>
   </div>
 
